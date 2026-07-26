@@ -605,8 +605,8 @@ section {
 
 .dishes-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: var(--space-2xl);
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
   margin-top: var(--space-3xl);
 }
 
@@ -1210,6 +1210,10 @@ section {
 
   .info-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dishes-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .experience-stats {
