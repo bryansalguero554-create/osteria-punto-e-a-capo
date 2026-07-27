@@ -145,7 +145,7 @@ h1, h2, h3, h4 {
 .section-subtitle {
   font-size: 1.05rem;
   color: var(--color-text-secondary);
-  max-width: 560px;
+  max-width: 640px;
   margin: 0 auto;
   line-height: 1.8;
 }
@@ -405,7 +405,7 @@ section {
 
 .hero-actions {
   display: flex;
-  gap: var(--space-lg);
+  gap: var(--space-md);
   justify-content: center;
   flex-wrap: wrap;
   animation: fadeInUp 1s var(--ease-out) 0.9s both;
@@ -416,11 +416,11 @@ section {
   display: inline-flex;
   align-items: center;
   gap: var(--space-sm);
-  padding: 0.85rem 2.2rem;
+  padding: 0.85rem 2rem;
   font-family: var(--font-body);
   font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   border-radius: var(--radius-full);
   cursor: pointer;
@@ -486,17 +486,6 @@ section {
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.3; height: 30px; }
   50% { opacity: 1; height: 45px; }
-}
-
-/* Keyframes */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 
@@ -597,7 +586,7 @@ section {
 
 
 /* ============================================
-   SPECIALITÀ / MENU
+   SPECIALITÀ / MENU GRID
    ============================================ */
 #specialita {
   background: var(--color-bg-primary);
@@ -657,28 +646,186 @@ section {
 
 .dish-card-title {
   font-family: var(--font-display);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-style: italic;
   margin-bottom: var(--space-sm);
 }
 
 .dish-card-desc {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--color-text-secondary);
   line-height: 1.7;
 }
 
-.dish-card-price {
-  margin-top: var(--space-md);
+
+/* ============================================
+   SEZIONE MENÙ COMPLETO & CATEGORIE
+   ============================================ */
+.menu-categories-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2xl);
+  margin-top: var(--space-3xl);
+}
+
+.menu-category-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  backdrop-filter: blur(10px);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.menu-category-card:hover {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.category-title {
   font-family: var(--font-display);
-  font-size: 1.2rem;
-  color: var(--color-accent-light);
+  font-size: 1.8rem;
   font-style: italic;
+  color: var(--color-accent);
+  margin-bottom: var(--space-xl);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-bottom: var(--space-md);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.category-title svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--color-accent);
+}
+
+.menu-items-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.menu-items-list li {
+  padding-bottom: var(--space-md);
+  border-bottom: 1px dashed rgba(200, 165, 94, 0.15);
+}
+
+.menu-items-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.item-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.item-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.special-menus-banner {
+  margin-top: var(--space-4xl);
+  background: linear-gradient(135deg, var(--color-bg-tertiary), var(--color-bg-secondary));
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-3xl);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+.special-menus-content h3 {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-style: italic;
+  color: var(--color-accent-light);
+  margin-bottom: var(--space-xs);
+}
+
+.special-menus-content p {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
 }
 
 
 /* ============================================
-   ESPERIENZA / PARALLAX BANNER
+   SEZIONE SERVIZI
+   ============================================ */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-2xl);
+  margin-top: var(--space-3xl);
+}
+
+.service-box {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.service-box:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+.service-box-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: var(--color-bg-glass);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+}
+
+.service-box-icon svg {
+  width: 26px;
+  height: 26px;
+  fill: var(--color-accent);
+}
+
+.service-box h4 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-style: italic;
+  margin-bottom: var(--space-sm);
+  color: var(--color-accent-light);
+}
+
+.service-box p {
+  font-size: 0.88rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+
+/* ============================================
+   EXPERIENCE BANNER
    ============================================ */
 .experience-banner {
   position: relative;
@@ -1133,7 +1280,7 @@ section {
   border: 1px solid var(--color-border-strong);
   border-radius: var(--radius-xl);
   padding: var(--space-4xl) var(--space-3xl);
-  max-width: 700px;
+  max-width: 750px;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -1152,35 +1299,6 @@ section {
   pointer-events: none;
 }
 
-.cta-box .section-title {
-  position: relative;
-  z-index: 1;
-}
-
-.cta-box .section-subtitle {
-  position: relative;
-  z-index: 1;
-  margin-bottom: var(--space-2xl);
-}
-
-.cta-box .btn {
-  position: relative;
-  z-index: 1;
-}
-
-.cta-phone {
-  margin-top: var(--space-lg);
-  font-size: 0.88rem;
-  color: var(--color-text-muted);
-  position: relative;
-  z-index: 1;
-}
-
-.cta-phone a {
-  color: var(--color-accent);
-  font-weight: 600;
-}
-
 
 /* ============================================
    RESPONSIVE DESIGN
@@ -1190,6 +1308,18 @@ section {
   .about-grid {
     grid-template-columns: 1fr;
     gap: var(--space-2xl);
+  }
+
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menu-categories-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dishes-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .about-text .section-label {
@@ -1212,10 +1342,6 @@ section {
     grid-template-columns: 1fr;
   }
 
-  .dishes-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
   .experience-stats {
     gap: var(--space-2xl);
   }
@@ -1228,6 +1354,10 @@ section {
 
   .container {
     padding: 0 var(--space-lg);
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
   }
 
   /* Mobile Nav */
@@ -1267,7 +1397,7 @@ section {
 
   .btn {
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
     justify-content: center;
   }
 
@@ -1310,6 +1440,12 @@ section {
   /* Map */
   .map-wrapper {
     height: 300px;
+  }
+
+  .special-menus-banner {
+    flex-direction: column;
+    text-align: center;
+    padding: var(--space-xl);
   }
 }
 
@@ -1357,11 +1493,6 @@ section {
   gap: 2px;
   font-size: 1rem;
   color: var(--color-accent);
-}
-
-.price-range .inactive {
-  color: var(--color-text-muted);
-  opacity: 0.3;
 }
 
 
@@ -1420,30 +1551,4 @@ section {
 
 @keyframes loaderFill {
   to { width: 100%; }
-}
-
-/* Services badges in info card */
-.services-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  margin-top: var(--space-lg);
-}
-
-.service-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: 0.45rem 1rem;
-  background: var(--color-bg-glass);
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-full);
-  font-size: 0.78rem;
-  color: var(--color-text-secondary);
-}
-
-.service-badge svg {
-  width: 14px;
-  height: 14px;
-  fill: var(--color-accent);
 }
