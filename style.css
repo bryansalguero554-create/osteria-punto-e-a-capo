@@ -32,7 +32,7 @@
 
   /* Typography */
   --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Inter', -apple-system, sans-serif;
+  --font-body: 'Karla', 'Trebuchet MS', sans-serif;
 
   /* Spacing Scale */
   --space-xs: 0.25rem;
@@ -453,6 +453,13 @@ section {
   border-color: var(--color-accent);
   color: var(--color-accent-light);
   transform: translateY(-2px);
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  flex: 0 0 auto;
+  fill: currentColor;
 }
 
 /* Scroll Indicator */
@@ -1301,6 +1308,155 @@ section {
 
 
 /* ============================================
+   PASSAPAROLA
+   ============================================ */
+.share-section {
+  background:
+    radial-gradient(circle at 82% 20%, rgba(200, 165, 94, 0.14), transparent 28%),
+    var(--color-bg-secondary);
+}
+
+.share-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  align-items: center;
+  gap: var(--space-3xl);
+  padding: clamp(2rem, 6vw, 4.5rem);
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(36, 32, 25, 0.94), rgba(15, 13, 11, 0.9));
+  box-shadow: var(--shadow-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.share-panel::after {
+  content: 'Punto E A Capo';
+  position: absolute;
+  right: -1rem;
+  bottom: -2.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(4rem, 10vw, 8rem);
+  font-style: italic;
+  color: rgba(200, 165, 94, 0.045);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.share-copy,
+.share-actions {
+  position: relative;
+  z-index: 1;
+}
+
+.share-copy .section-title {
+  max-width: 720px;
+  margin-bottom: var(--space-lg);
+}
+
+.share-copy p {
+  color: var(--color-text-secondary);
+  max-width: 620px;
+}
+
+.share-actions {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.share-actions .btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.btn-whatsapp {
+  background: #d8e8d2;
+  color: #183d2b;
+}
+
+.btn-whatsapp:hover {
+  background: #edf4e9;
+  color: #183d2b;
+  transform: translateY(-2px);
+}
+
+.share-feedback {
+  min-height: 1.5rem;
+  color: var(--color-accent-light);
+  font-size: 0.82rem;
+  text-align: center;
+}
+
+
+/* ============================================
+   FAQ
+   ============================================ */
+#faq {
+  background: var(--color-bg-primary);
+}
+
+.faq-layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.75fr) minmax(0, 1.25fr);
+  gap: var(--space-4xl);
+  align-items: start;
+}
+
+.faq-intro {
+  position: sticky;
+  top: 130px;
+}
+
+.faq-list {
+  border-top: 1px solid var(--color-border-strong);
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.faq-item summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-xl);
+  padding: var(--space-xl) 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.65rem);
+  color: var(--color-text-primary);
+  cursor: pointer;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 300;
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.faq-item[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.faq-item p {
+  max-width: 680px;
+  padding: 0 3rem var(--space-xl) 0;
+  color: var(--color-text-secondary);
+}
+
+.mobile-booking-bar {
+  display: none;
+}
+
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
 
@@ -1344,6 +1500,16 @@ section {
 
   .experience-stats {
     gap: var(--space-2xl);
+  }
+
+  .share-panel,
+  .faq-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .faq-intro {
+    position: static;
   }
 }
 
@@ -1447,6 +1613,43 @@ section {
     text-align: center;
     padding: var(--space-xl);
   }
+
+  body {
+    padding-bottom: 72px;
+  }
+
+  .share-panel {
+    padding: var(--space-2xl) var(--space-lg);
+  }
+
+  .mobile-booking-bar {
+    position: fixed;
+    left: var(--space-md);
+    right: var(--space-md);
+    bottom: var(--space-md);
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-lg);
+    padding: 0.8rem 1.1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    background: var(--color-accent);
+    color: var(--color-text-on-accent);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .mobile-booking-bar:hover {
+    color: var(--color-text-on-accent);
+  }
+
+  .mobile-booking-bar strong {
+    font-size: 0.88rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1461,6 +1664,20 @@ section {
 
   .info-card {
     padding: var(--space-lg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
