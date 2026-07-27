@@ -7,15 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
   // ---- Page Loader ----
   const loader = document.getElementById('pageLoader');
   window.addEventListener('load', () => {
-    setTimeout(() => {
-      loader.classList.add('hidden');
-    }, 1200);
+    loader.classList.add('hidden');
   });
 
-  // Fallback: hide loader after 3s max
+  // Fallback: hide loader if a resource is slow
   setTimeout(() => {
     loader.classList.add('hidden');
-  }, 3000);
+  }, 1800);
 
 
   // ---- Navbar scroll effect ----
@@ -140,5 +138,40 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.addEventListener('scroll', highlightNav, { passive: true });
+
+
+  // ---- Share the restaurant ----
+  const shareButton = document.getElementById('shareButton');
+  const shareWhatsApp = document.getElementById('shareWhatsApp');
+  const shareFeedback = document.getElementById('shareFeedback');
+  const shareUrl = window.location.href.split('#')[0];
+  const shareText = 'Ho trovato un ristorante da provare insieme: Osteria Punto E A Capo a Cernusco Lombardone.';
+
+  if (shareWhatsApp) {
+    shareWhatsApp.href = `https://wa.me/?text=${encodeURIComponent(`${shareText} ${shareUrl}`)}`;
+  }
+
+  if (shareButton) {
+    shareButton.addEventListener('click', async () => {
+      try {
+        if (navigator.share) {
+          await navigator.share({
+            title: 'Osteria Punto E A Capo',
+            text: shareText,
+            url: shareUrl
+          });
+          shareFeedback.textContent = 'Grazie per il passaparola.';
+          return;
+        }
+
+        await navigator.clipboard.writeText(shareUrl);
+        shareFeedback.textContent = 'Link copiato: ora puoi inviarlo a chi vuoi.';
+      } catch (error) {
+        if (error.name !== 'AbortError') {
+          shareFeedback.textContent = 'Copia il link dalla barra del browser per condividerlo.';
+        }
+      }
+    });
+  }
 
 });
