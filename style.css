@@ -662,11 +662,36 @@ section {
 /* ============================================
    SEZIONE MENÙ COMPLETO & CATEGORIE
    ============================================ */
+.menu-group-title {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--color-accent);
+  text-align: center;
+  margin-top: var(--space-4xl);
+}
+
+.menu-categories-grid:first-of-type,
+.menu-group-title + .menu-categories-grid {
+  margin-top: var(--space-2xl);
+}
+
 .menu-categories-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: var(--space-2xl);
   margin-top: var(--space-3xl);
+}
+
+.menu-allergen-note {
+  margin-top: var(--space-2xl);
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 }
 
 .menu-category-card {
@@ -737,6 +762,15 @@ section {
   font-size: 0.85rem;
   color: var(--color-text-secondary);
   line-height: 1.6;
+}
+
+.item-price {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  white-space: nowrap;
+  margin-left: var(--space-md);
 }
 
 .special-menus-banner {
@@ -1258,8 +1292,27 @@ section {
   color: var(--color-text-muted);
 }
 
-.footer-bottom {
+.footer-legal {
   margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  line-height: 1.8;
+}
+
+.footer-legal a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}
+
+.footer-legal a:hover {
+  color: var(--color-accent);
+}
+
+.footer-bottom {
+  margin-top: var(--space-lg);
   padding-top: var(--space-lg);
   border-top: 1px solid var(--color-border);
   text-align: center;
